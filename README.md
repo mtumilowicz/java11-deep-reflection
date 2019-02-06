@@ -18,9 +18,10 @@ reflection
 deep reflection on the `JDK11`
 * `Field`, `Method`, and `Constructor` all inherit from a 
 class `AccessibleObject`:
-    * `static void setAccessible(AccessibleObject[] array, boolean flag)`
-    - Convenience method to set the accessible flag for an array of reflected 
+    * `public static void setAccessible(AccessibleObject[] array, boolean flag)` - 
+    Convenience method to set the accessible flag for an array of reflected 
     objects with a single security check (for efficiency)
+        * since 9
         * `array` the array of `AccessibleObjects`
         * `flag` the new value for the accessible flag
               in each object
@@ -30,10 +31,24 @@ class `AccessibleObject`:
             * `SecurityException` if the request is denied by the security manager
              or an element in the array is a constructor for `java.lang.Class`
              and the flag is `true`
-    * void setAccessible(boolean flag)
-    * boolean trySetAccessible()
-    * boolean canAccess(Object obj)
-
+    * `public void setAccessible(boolean flag)` -
+    * Set the accessible flag for this reflected object to the indicated boolean 
+    value. A value of true indicates that the reflected object should suppress 
+    checks for Java language access control when it is used.
+        * modules - method may be used by a caller in class `C` to enable access 
+        to a member of declaring class `D`:
+            * `C` and `D` are in the same module.
+            * The member is public and `D` is public in a package that the module 
+                containing `D` exports to at least the module containing `C`.
+            * The member is protected static, `D` is public in a package that the 
+                module containing `D` exports to at least the module containing `C`, 
+                and `C` is a subclass of `D`.
+            * `D` is in a package that the module containing `D` opens to at least the 
+                module containing `C`. All packages in unnamed and open modules are open 
+                to all modules and so this method always succeeds when `D` is in an 
+                unnamed or open module.
+    * `public boolean trySetAccessible()`
+    * `public boolean canAccess(Object obj)`
 # projects
 * https://github.com/mtumilowicz/java11-deep-reflection-in-module
 * https://github.com/mtumilowicz/java11-deep-reflection-cross-modules
