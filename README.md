@@ -52,11 +52,11 @@ class `AccessibleObject`:
         * since 9
         * set the accessible flag for this reflected object to true
             if possible
-        * If access
-            cannot be enabled, i.e. the checks or Java language access control cannot
-            be suppressed, this method returns {@code false} (as opposed to {@code
-            setAccessible(true)} throwing {@code InaccessibleObjectException} when
-            it fails
+        * if access cannot be enabled, i.e. the checks or Java language access control cannot
+            be suppressed, this method returns false (as opposed to `setAccessible(true)` throwing 
+            `InaccessibleObjectException` when it fails
+        * exceptions:
+            * `SecurityException` if the request is denied by the security manager
     * `public boolean canAccess(Object obj)`
 # projects
 * https://github.com/mtumilowicz/java11-deep-reflection-in-module
