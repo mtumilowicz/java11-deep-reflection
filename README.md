@@ -46,12 +46,12 @@ class `AccessibleObject`
         `InaccessibleObjectException` when it fails)
     * `SecurityException` if the request is denied by the security manager
 * `public final boolean canAccess(Object obj)` - 
-    test if the caller `obj` can access `this` reflected object
+    test if the caller can access member of `obj`
     * since 9
     * `IllegalArgumentException` -
-      * if reflected object is a static member or constructor and the given `obj` is `non-null`
-      * if reflected object is an instance method or field and the given `obj` is `null` 
-      * or of type that is not a subclass of ???????????????????????.
+      * if static member or constructor and the given `obj` is `non-null`
+      * if an instance method or field and the given `obj` is `null` or `this`
+      is not a member of `obj`
         
 # projects
 * https://github.com/mtumilowicz/java11-deep-reflection-in-module
