@@ -66,17 +66,37 @@ class X {
 ```
 * `setAccessible(boolean flag)`
     ```
+    // given
     var methodGo = X.class.getDeclaredMethod("go");
     var x = new X();
     
+    // then
     assertFalse(methodGo.canAccess(x));
     
+    // when
     methodGo.setAccessible(true);
     
+    // then
     assertTrue(methodGo.canAccess(x));
     assertTrue((boolean) methodGo.invoke(x));
     ```
 * `setAccessible(AccessibleObject[] array, boolean flag)`
+    ```
+    // given
+    var methodGo = X.class.getDeclaredMethod("go");
+    var methodGo2 = X.class.getDeclaredMethod("go2");
+    var x = new X();
+    Predicate<AccessibleObject> canAccess = obj -> obj.canAccess(x);
+    
+    // and
+    AccessibleObject[] methods = {methodGo, methodGo2};
+    
+    // when
+    AccessibleObject.setAccessible(methods, true);
+    
+    // then
+    assertTrue(Arrays.stream(methods).allMatch(canAccess));
+    ```
 * `trySetAccessible()`
 * `canAccess(Object obj)`
     
