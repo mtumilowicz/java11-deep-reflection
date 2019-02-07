@@ -48,7 +48,7 @@ class `AccessibleObject`
 * `public final boolean canAccess(Object obj)` - 
     test if the caller can access member of `obj`
     * since 9
-    * `IllegalArgumentException` -
+    * `IllegalArgumentException`:
       * if static member or constructor and the given `obj` is `non-null`
       * if an instance method or field and the given `obj` is `null` or `this`
       is not a member of `obj`
