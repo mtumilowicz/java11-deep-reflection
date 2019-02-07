@@ -14,9 +14,9 @@ reflection
 * used by Hibernate and Spring
 
 # methods
-* before `JDK9`: call `setAccessible(true)`  invoked on 
+* before `JDK9`: `setAccessible(true)`  invoked on 
 `Field`/`Method`/`Constructor` was sufficient
-* in projects listed in (projects section) we will show how to handle 
+* in projects listed in [projects section](#projects) we will show how to handle 
 deep reflection on the `JDK11`
 * `Field`, `Method`, and `Constructor` all inherit from a 
 class `AccessibleObject`:
