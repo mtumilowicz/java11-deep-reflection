@@ -48,7 +48,7 @@ class `AccessibleObject`:
             * `SecurityException` if the request is denied by the security manager
              or an element in the array is a constructor for `java.lang.Class`
              and the flag is `true`
-    * `public boolean trySetAccessible()`
+    * `public final boolean trySetAccessible()`
         * since 9
         * set the accessible flag for this reflected object to true
             if possible
@@ -57,7 +57,17 @@ class `AccessibleObject`:
             `InaccessibleObjectException` when it fails
         * exceptions:
             * `SecurityException` if the request is denied by the security manager
-    * `public boolean canAccess(Object obj)`
+    * `public final boolean canAccess(Object obj)` - 
+    test if the caller can access this reflected object
+        * since 9
+        * `obj` an instance object of the declaring class of this reflected
+          object if it is an instance method or field
+        * `IllegalArgumentException` -
+          * if this reflected object is a static member or constructor and the given `obj` is `non-null`
+          * if this reflected object is an instance method or field and the given `obj` is `null` 
+          or of type that is not a subclass of the declaring class of the member.
+            
+    
 # projects
 * https://github.com/mtumilowicz/java11-deep-reflection-in-module
 * https://github.com/mtumilowicz/java11-deep-reflection-cross-modules
