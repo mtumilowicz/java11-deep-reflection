@@ -98,8 +98,50 @@ class X {
     assertTrue(Arrays.stream(methods).allMatch(canAccess));
     ```
 * `trySetAccessible()`
-* `canAccess(Object obj)`
+    ```
+    // given
+    var methodGo = X.class.getDeclaredMethod("go");
+    var x = new X();
     
+    // then
+    assertFalse(methodGo.canAccess(x));
+    
+    // when
+    assertTrue(methodGo.trySetAccessible());
+    
+    // then
+    assertTrue(methodGo.canAccess(x));
+    assertTrue((boolean) methodGo.invoke(x));
+    ```
+* `canAccess(Object obj)`
+    * access denied
+    ```
+    @Test
+    public void canAccess() throws NoSuchMethodException {
+        // given
+        var methodGo = X.class.getDeclaredMethod("go");
+        var x = new X();
+        
+        // expect
+        assertFalse(methodGo.canAccess(x));
+    }
+    ```
+    * when declared method is not a member of `obj`
+        ```
+        @Test(expected = IllegalArgumentException.class)
+        public void canAccess_methodGo_isNotMemberOf() throws NoSuchMethodException {
+            // given
+            var methodGo = X.class.getDeclaredMethod("go");
+    
+            // expect
+            assertFalse(methodGo.canAccess(new Y()));
+        }
+        ```
+        where `Y` is just empty class:
+        ```
+        public class Y {
+        }
+        ```
 # projects
 * https://github.com/mtumilowicz/java11-deep-reflection-in-module
 * https://github.com/mtumilowicz/java11-deep-reflection-cross-modules
