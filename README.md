@@ -115,17 +115,17 @@ class X {
     ```
 * `canAccess(Object obj)`
     * access denied
-    ```
-    @Test
-    public void canAccess() throws NoSuchMethodException {
-        // given
-        var methodGo = X.class.getDeclaredMethod("go");
-        var x = new X();
-        
-        // expect
-        assertFalse(methodGo.canAccess(x));
-    }
-    ```
+        ```
+        @Test
+        public void canAccess() throws NoSuchMethodException {
+            // given
+            var methodGo = X.class.getDeclaredMethod("go");
+            var x = new X();
+            
+            // expect
+            assertFalse(methodGo.canAccess(x));
+        }
+        ```
     * when declared method is not a member of `obj`
         ```
         @Test(expected = IllegalArgumentException.class)
@@ -142,6 +142,7 @@ class X {
         public class Y {
         }
         ```
+        
 # projects
 * https://github.com/mtumilowicz/java11-deep-reflection-in-module
 * https://github.com/mtumilowicz/java11-deep-reflection-cross-modules
