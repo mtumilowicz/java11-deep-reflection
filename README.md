@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-deep-reflection.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-deep-reflection)
+
 # java11-deep-reflection
 
 Reference: https://www.amazon.com/Java-Language-Features-Modules-Expressions/dp/1484233476
