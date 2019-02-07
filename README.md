@@ -53,6 +53,33 @@ class `AccessibleObject`
       * if an instance method or field and the given `obj` is `null` or `this`
       is not a member of `obj`
         
+# project description
+We will provide tests for methods mentioned above. As a exemplary member
+we will take private instance method and the default module (it's only
+overview - more sophisticated examples are in [projects](#projects)):
+```
+class X {
+    private void go() {
+
+    }
+}
+```
+* `setAccessible(boolean flag)`
+    ```
+    var methodGo = X.class.getDeclaredMethod("go");
+    var x = new X();
+    
+    assertFalse(methodGo.canAccess(x));
+    
+    methodGo.setAccessible(true);
+    
+    assertTrue(methodGo.canAccess(x));
+    assertTrue((boolean) methodGo.invoke(x));
+    ```
+* `setAccessible(AccessibleObject[] array, boolean flag)`
+* `trySetAccessible()`
+* `canAccess(Object obj)`
+    
 # projects
 * https://github.com/mtumilowicz/java11-deep-reflection-in-module
 * https://github.com/mtumilowicz/java11-deep-reflection-cross-modules
