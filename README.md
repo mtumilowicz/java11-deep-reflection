@@ -2,9 +2,12 @@
 
 # java11-deep-reflection
 
-Reference: https://www.amazon.com/Java-Language-Features-Modules-Expressions/dp/1484233476
+* References
+    * https://www.amazon.com/Java-Language-Features-Modules-Expressions/dp/1484233476
+    * [Modular Java Development in Action](https://www.youtube.com/watch?v=XVk5lXVWeIk)
 
 # preface
+![alt text](img/java9_deep_reflection.png)
 * reading/writing fields and invoking methods/constructors
 rise issues of access control
 * for example, if you declare a field as private it should
