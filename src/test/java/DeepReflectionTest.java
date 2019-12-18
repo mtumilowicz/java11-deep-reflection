@@ -8,9 +8,6 @@ import java.util.function.Predicate;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by mtumilowicz on 2019-02-07.
- */
 public class DeepReflectionTest {
 
     @Test
